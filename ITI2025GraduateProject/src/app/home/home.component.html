@@ -1,0 +1,95 @@
+<section class="hero">
+  <div class="hero-text">
+    <h1>FIND CLOTHES<br> THAT MATCHES<br> YOUR STYLE</h1>
+    <p>200+ Brands . 2000+ Products . 30,000+ Customers</p> 
+  </div>
+  <div class="hero-img">
+    <img src="https://phantomstore.netlify.app/assets/rectangle-21@2x-Dp3J-lG4.png" alt="Hero Banner" />
+  </div>
+</section>
+<section class="brands">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Versace_old_logo.svg/1920px-Versace_old_logo.svg.png" alt="VERSACE" />
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Zara_Logo.svg/1920px-Zara_Logo.svg.png" alt="ZARA" />
+  <img src="https://1000logos.net/wp-content/uploads/2017/01/Font-Gucci-Logo-768x286.jpg" alt="GUCCI" />
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Prada-Logo.svg/1024px-Prada-Logo.svg.png" alt="PRADA" />
+  <img src="https://pngimg.com/d/calvin_klein_PNG8.png" alt="CALVIN KLEIN" />
+</section>
+<section>
+  <h2 class="section-title">NEW ARRIVALS</h2>
+  <div class="products">
+    <div *ngFor="let p of newArrivals" class="product-card">
+      <a [routerLink]="['/product', p.id]">
+        <img [src]="p.image" alt="{{ p.title }}" />
+      </a>
+      <h3>{{ p.title }}</h3>
+
+      <div class="stars">
+        <ng-container *ngFor="let star of getStars(p.rating?.rate)">
+          <span [class.filled]="star <= p.rating?.rate">★</span>
+        </ng-container>
+        <small>({{ p.rating?.count }})</small>
+      </div>
+      <p class="price">${{ p.price }}</p>
+    </div>
+  </div>
+
+  <h2 class="section-title">TOP SELLING</h2>
+  <div class="products">
+    <div *ngFor="let p of topSelling" class="product-card">
+      <a [routerLink]="['/product', p.id]">
+        <img [src]="p.image" alt="{{ p.title }}" />
+      </a>
+      <h3>{{ p.title }}</h3>
+
+      <div class="stars">
+        <ng-container *ngFor="let star of getStars(p.rating?.rate)">
+          <span [class.filled]="star <= p.rating?.rate">★</span>
+        </ng-container>
+        <small>({{ p.rating?.count }})</small>
+      </div>
+      <p class="price">${{ p.price }}</p>
+    </div>
+  </div>
+</section>
+<section class="categories">
+  <h2>BROWSE BY DRESS STYLE</h2>
+  <div class="category-container">
+    <div class="row">
+      <div class="cat-card square">
+        <img src="https://www.bewakoof.com/blog/wp-content/uploads/2023/03/image-19.png" alt="Casual" />
+        <h3>Casual</h3>
+      </div>
+      <div class="cat-card rectangle">
+        <img src="https://m.media-amazon.com/images/I/81dV52s97pL._AC_SL1500_.jpg" alt="Formal" />
+        <h3>Formal</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="cat-card rectangle">
+        <img src="https://assets.myntassets.com/w_412,q_60,dpr_2,fl_progressive/assets/images/2025/APRIL/24/CvpgnA2V_d696391fcb004f5d9d03d48ec270c7ef.jpg" alt="Party" />
+        <h3>Party</h3>
+      </div>
+      <div class="cat-card square">
+        <img src="https://aestheticnation.co.in/cdn/shop/files/Pace_Deepcut_Tanktop.jpg?v=1754812180&width=1688" alt="Gym" />
+        <h3>Gym</h3>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="customers">
+  <h2>OUR HAPPY CUSTOMERS</h2>
+  <div class="customer-cards">
+    <div class="customer-card">
+      <div class="stars">★★★★★</div>
+      <p><strong>Sarah M.</strong> – Really happy with the quality and style of the clothes. The customer service is top notch too!</p>
+    </div>
+    <div class="customer-card">
+      <div class="stars">★★★★★</div>
+      <p><strong>Alex K.</strong> – Awesome shopping experience! Very stylish and comfortable outfits. Definitely recommend.</p>
+    </div>
+    <div class="customer-card">
+      <div class="stars">★★★★☆</div>
+      <p><strong>James L.</strong> – Great designs, always on trend. Shipping was quick as well. I’ll order again soon!</p>
+    </div>
+  </div>
+</section>

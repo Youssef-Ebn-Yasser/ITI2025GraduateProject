@@ -1,3 +1,5 @@
+import { publish } from "rxjs";
+
 export interface Iproduct {
   id: number;
   name: String;
@@ -8,12 +10,22 @@ export interface Iproduct {
   imagePath: string[];
   rate: number;
   price: number;
+  dressStyle: enDressStyle;
+  payNumber:number;
 }
 
 
-enum enSize {
+export enum enSize {
   small = 1,
   medium = 2,
   large = 3,
   xLarge = 4
 }
+
+export enum enDressStyle {
+  casual = 1,
+  formal = 2,
+  party = 3,
+  gym = 4
+}
+

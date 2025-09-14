@@ -1,42 +1,46 @@
 <div class="card shadow-lg border-0 rounded-4 overflow-hidden" style="width: 20rem;">
-  <!-- Product Image Carousel (if multiple images) -->
+
   <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-      <div class="carousel-item active" >
-        <img src="assets/images/banner/gym.png" class="d-block w-100" alt=product.name>
+
+      @for (imagePath of product.imagePath; let i = $index; track imagePath) {
+      <div class="carousel-item" [class.active]="i === 0" style="height:320px !important">
+        <img [src]="imagePath" class="d-block w-100 h-100" [alt]="product.name" >
       </div>
-      <!-- <div class="carousel-item" *ngFor="let img of product.imagePath.slice(1)"> -->
-        <img src="assets/images/banners/gym.png" class="d-block w-100" alt="product.name">
-      <!-- </div> -->
+      }
+
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
+    @if(product.imagePath.length > 1){
+      <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    }
+
   </div>
 
-  <!-- Card Body -->
-  <div class="card-body text-center">
-    <h5 class="card-title fw-bold">product.name</h5>
 
-    <!-- Rating -->
+  <div class="card-body text-center">
+    <h5 class="card-title fw-bold">{{product.name}}</h5>
+
+
     <div class="mb-2">
       <ng-container *ngFor="let star of [1,2,3,4,5]; let i=index">
-        <!-- <i class="bi" [ngClass]="{
+        <i class="bi" [ngClass]="{
           'bi-star-fill text-warning': i < product.rate,
           'bi-star text-secondary': i >= product.rate
-        }"></i> -->
+        }"></i>
       </ng-container>
     </div>
 
-    <!-- Price -->
-    <p class="text-success fw-bold fs-5"> product.price</p>
 
-    <!-- Action Buttons -->
+    <p class="text-success fw-bold fs-5">{{product.price}}</p>
+
+
     <div class="d-flex justify-content-center gap-2">
-      <button class="btn btn-outline-primary btn-sm">
+      <button class="btn btn-outline-primary btn-sm" (click)="onBuy()" >
         <i class="bi bi-cart-plus"></i> Add to Cart
       </button>
       <button class="btn btn-outline-danger btn-sm">

@@ -2,9 +2,10 @@ import { publish } from "rxjs";
 
 export interface Iproduct {
   id: number;
+  catId:number;
   name: String;
   description: String;
-  discount: Number;
+  discount: number;
   avaliableColor: String[];
   size: enSize,
   imagePath: string[];
